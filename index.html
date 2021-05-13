@@ -1,9 +1,115 @@
-<style type="text/css">
-.highlight-white {
-  box-shadow: inset 0 0 3px 3px yellow;
+<html><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>chessboardjs Example #5000 - Only Allow Legal Moves</title>
+  <base href="../">
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+</head>
+<body>
+<p><a href="examples#5000">← Back to all examples.</a></p>
+
+<p>You can integrate chessboard.js with the <a href="https://github.com/jhlywa/chess.js">chess.js</a> library to only allow legal moves.</p>
+
+<!--- Begin Example HTML ------------------------------------------------------>
+<div id="myBoard" style="width: 400px"><div class="chessboard-63f37"><div class="board-b72b1" style="width: 392px;"><div class="row-5277c"><div class="square-55d63 white-1e1d7 square-a8" style="width:49px;height:49px;" id="a8-61e0-2ca8-f2ef-ee27-4b61-c730-9b8a-bc72" data-square="a8"><div class="notation-322f9 numeric-fc462">8</div><img src="img/chesspieces/wikipedia/bR.png" alt="" class="piece-417db" data-piece="bR" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-b8" style="width:49px;height:49px;" id="b8-4851-68d2-dae3-9dcd-7ca4-90a7-5f29-3031" data-square="b8"><img src="img/chesspieces/wikipedia/bN.png" alt="" class="piece-417db" data-piece="bN" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-c8" style="width:49px;height:49px;" id="c8-7f92-e5e5-e5d0-1121-caa5-f06f-a949-0c4d" data-square="c8"><img src="img/chesspieces/wikipedia/bB.png" alt="" class="piece-417db" data-piece="bB" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-d8" style="width:49px;height:49px;" id="d8-2605-9a74-feed-cfa3-cfd2-95e7-1b9c-2085" data-square="d8"><img src="img/chesspieces/wikipedia/bQ.png" alt="" class="piece-417db" data-piece="bQ" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-e8" style="width:49px;height:49px;" id="e8-b8c6-63a5-980c-8b14-dadb-2a91-5628-0255" data-square="e8"><img src="img/chesspieces/wikipedia/bK.png" alt="" class="piece-417db" data-piece="bK" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-f8" style="width:49px;height:49px;" id="f8-c2d6-086d-26d0-f14d-d930-b290-5e87-0207" data-square="f8"><img src="img/chesspieces/wikipedia/bB.png" alt="" class="piece-417db" data-piece="bB" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-g8" style="width:49px;height:49px;" id="g8-5285-a342-aedb-173c-5e3b-fa68-81bf-f10b" data-square="g8"><img src="img/chesspieces/wikipedia/bN.png" alt="" class="piece-417db" data-piece="bN" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-h8" style="width:49px;height:49px;" id="h8-d674-2f79-4c7e-daf4-f753-eac5-012c-4590" data-square="h8"><img src="img/chesspieces/wikipedia/bR.png" alt="" class="piece-417db" data-piece="bR" style="width:49px;height:49px;"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 black-3c85d square-a7" style="width:49px;height:49px;" id="a7-afc3-04af-4bba-e31d-0bb6-a7f0-3415-a353" data-square="a7"><div class="notation-322f9 numeric-fc462">7</div><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-b7" style="width:49px;height:49px;" id="b7-771b-4d93-40e6-6c05-a1b8-d6ab-3668-bc25" data-square="b7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-c7" style="width:49px;height:49px;" id="c7-43b5-43dd-d064-bdbf-5787-265c-743d-393a" data-square="c7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-d7" style="width:49px;height:49px;" id="d7-036b-8387-0838-4d2c-1a12-411d-a867-e2f9" data-square="d7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-e7" style="width:49px;height:49px;" id="e7-baca-3500-0bb8-ea32-df10-d47b-bff6-b1da" data-square="e7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-f7" style="width:49px;height:49px;" id="f7-40a7-db5e-97e3-28dc-c386-5d55-5177-0cae" data-square="f7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-g7" style="width:49px;height:49px;" id="g7-8355-ee03-dbb1-b896-fc98-0e97-18ce-16e3" data-square="g7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-h7" style="width:49px;height:49px;" id="h7-36ea-eba9-f486-5386-ba9f-28db-40ec-1c38" data-square="h7"><img src="img/chesspieces/wikipedia/bP.png" alt="" class="piece-417db" data-piece="bP" style="width:49px;height:49px;"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 white-1e1d7 square-a6" style="width:49px;height:49px;" id="a6-9c7e-376f-f1b2-eae2-f82d-49ae-3190-b0b1" data-square="a6"><div class="notation-322f9 numeric-fc462">6</div></div><div class="square-55d63 black-3c85d square-b6" style="width:49px;height:49px;" id="b6-0983-6580-c699-9aee-cb3d-6f40-0193-1449" data-square="b6"></div><div class="square-55d63 white-1e1d7 square-c6" style="width:49px;height:49px;" id="c6-3969-4ff2-319f-cfe2-d372-eaa1-38cb-4a8d" data-square="c6"></div><div class="square-55d63 black-3c85d square-d6" style="width:49px;height:49px;" id="d6-e517-86ac-e8be-ec49-8fc2-a91f-7597-3431" data-square="d6"></div><div class="square-55d63 white-1e1d7 square-e6" style="width:49px;height:49px;" id="e6-685b-1e0e-daa3-8cd0-88b2-e4aa-e7d3-311f" data-square="e6"></div><div class="square-55d63 black-3c85d square-f6" style="width:49px;height:49px;" id="f6-ee99-3cf3-17b3-33aa-8e53-2d3a-f8be-0d6e" data-square="f6"></div><div class="square-55d63 white-1e1d7 square-g6" style="width:49px;height:49px;" id="g6-e30b-7dd7-9dd0-cf8a-20e9-1640-9fb9-f7d9" data-square="g6"></div><div class="square-55d63 black-3c85d square-h6" style="width:49px;height:49px;" id="h6-3b51-26e1-c5b0-2317-fa85-6cdd-d378-fe86" data-square="h6"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 black-3c85d square-a5" style="width:49px;height:49px;" id="a5-9df6-6261-1c91-f01f-a9ed-7c8c-a123-3b4f" data-square="a5"><div class="notation-322f9 numeric-fc462">5</div></div><div class="square-55d63 white-1e1d7 square-b5" style="width:49px;height:49px;" id="b5-ea35-585a-89b8-912c-fb5a-8b44-e25e-11ef" data-square="b5"></div><div class="square-55d63 black-3c85d square-c5" style="width:49px;height:49px;" id="c5-b62b-af3e-caec-395d-c520-685f-e47c-caac" data-square="c5"></div><div class="square-55d63 white-1e1d7 square-d5" style="width:49px;height:49px;" id="d5-fc8f-112b-2cbb-52d8-8f7d-7287-3fb9-5357" data-square="d5"></div><div class="square-55d63 black-3c85d square-e5" style="width:49px;height:49px;" id="e5-2a8e-6ed3-957a-20e4-5819-3e3b-8daa-8063" data-square="e5"></div><div class="square-55d63 white-1e1d7 square-f5" style="width:49px;height:49px;" id="f5-e7da-189d-6e00-fac8-bc97-e0e7-deda-3b23" data-square="f5"></div><div class="square-55d63 black-3c85d square-g5" style="width:49px;height:49px;" id="g5-5b04-d00b-4583-b3ba-8a1d-115c-9408-2863" data-square="g5"></div><div class="square-55d63 white-1e1d7 square-h5" style="width:49px;height:49px;" id="h5-a22e-da4e-d1d6-6f68-f939-be65-81fd-fc77" data-square="h5"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 white-1e1d7 square-a4" style="width:49px;height:49px;" id="a4-5824-e358-e29e-4d10-83fa-ec5e-f50e-224b" data-square="a4"><div class="notation-322f9 numeric-fc462">4</div></div><div class="square-55d63 black-3c85d square-b4" style="width:49px;height:49px;" id="b4-df3c-1ac7-34e6-97e7-0a2d-85fc-0b2f-82d0" data-square="b4"></div><div class="square-55d63 white-1e1d7 square-c4" style="width:49px;height:49px;" id="c4-c37a-a48c-cf85-9aba-349d-fffc-7f2b-6001" data-square="c4"></div><div class="square-55d63 black-3c85d square-d4" style="width:49px;height:49px;" id="d4-3053-44ef-e0a6-f6d1-c153-212d-6e5b-9896" data-square="d4"></div><div class="square-55d63 white-1e1d7 square-e4" style="width:49px;height:49px;" id="e4-8757-4a42-5f24-bd07-a9c7-9006-1112-229b" data-square="e4"></div><div class="square-55d63 black-3c85d square-f4" style="width:49px;height:49px;" id="f4-226f-0767-3389-4423-aacf-8689-1d22-bcdd" data-square="f4"></div><div class="square-55d63 white-1e1d7 square-g4" style="width:49px;height:49px;" id="g4-02c0-7f5e-aba0-7d5e-c2f2-9921-e53d-8a03" data-square="g4"></div><div class="square-55d63 black-3c85d square-h4" style="width:49px;height:49px;" id="h4-bc12-724d-9269-1d96-baa0-6ab8-baf2-ae7c" data-square="h4"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 black-3c85d square-a3" style="width:49px;height:49px;" id="a3-ab8e-f3eb-94b8-e6e0-0bd7-576f-fe33-4a11" data-square="a3"><div class="notation-322f9 numeric-fc462">3</div></div><div class="square-55d63 white-1e1d7 square-b3" style="width:49px;height:49px;" id="b3-7e5e-0a6c-746d-4735-f04f-7e5c-ce46-f942" data-square="b3"></div><div class="square-55d63 black-3c85d square-c3" style="width:49px;height:49px;" id="c3-28f1-cd29-269a-d0e7-e0bd-cc97-bbb4-9233" data-square="c3"></div><div class="square-55d63 white-1e1d7 square-d3" style="width:49px;height:49px;" id="d3-6783-d864-52c2-4b93-de37-bc68-cfd5-d682" data-square="d3"></div><div class="square-55d63 black-3c85d square-e3" style="width:49px;height:49px;" id="e3-bc48-a3f7-81b7-c9c4-c290-8828-89ed-8d37" data-square="e3"></div><div class="square-55d63 white-1e1d7 square-f3" style="width:49px;height:49px;" id="f3-1f39-3a0a-c1f0-b168-4df6-9ee2-710f-d51c" data-square="f3"></div><div class="square-55d63 black-3c85d square-g3" style="width:49px;height:49px;" id="g3-0653-e42d-fcfd-f004-ad01-1f22-5dee-d6da" data-square="g3"></div><div class="square-55d63 white-1e1d7 square-h3" style="width:49px;height:49px;" id="h3-d715-53b8-f1d8-7c6a-8ab6-bffa-4453-28ba" data-square="h3"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 white-1e1d7 square-a2" style="width:49px;height:49px;" id="a2-c559-a4a8-6891-7eca-c385-b025-ae8b-5a9a" data-square="a2"><div class="notation-322f9 numeric-fc462">2</div><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-b2" style="width:49px;height:49px;" id="b2-88db-8dba-70fb-15b2-f020-5d71-c2a7-1819" data-square="b2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-c2" style="width:49px;height:49px;" id="c2-8e34-2c8a-758d-40bc-5e54-c98d-0dce-26d1" data-square="c2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-d2" style="width:49px;height:49px;" id="d2-7ff2-62f2-ab6e-2c2d-e871-2fd9-ffb3-93f1" data-square="d2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-e2" style="width:49px;height:49px;" id="e2-ed3a-8da4-fca4-ab91-3639-a05f-b5db-595a" data-square="e2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-f2" style="width:49px;height:49px;" id="f2-3d40-6350-8319-d781-97ce-03bc-9a60-87a0" data-square="f2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-g2" style="width:49px;height:49px;" id="g2-c51d-7d57-272a-5c1f-34cd-1ec8-6481-7de5" data-square="g2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-h2" style="width:49px;height:49px;" id="h2-b8a3-f7bd-37f1-4106-5945-09f2-c0a6-7b8c" data-square="h2"><img src="img/chesspieces/wikipedia/wP.png" alt="" class="piece-417db" data-piece="wP" style="width:49px;height:49px;"></div><div class="clearfix-7da63"></div></div><div class="row-5277c"><div class="square-55d63 black-3c85d square-a1" style="width:49px;height:49px;" id="a1-608f-ac8f-3e60-57a5-5ee4-6f58-f932-4ff8" data-square="a1"><div class="notation-322f9 alpha-d2270">a</div><div class="notation-322f9 numeric-fc462">1</div><img src="img/chesspieces/wikipedia/wR.png" alt="" class="piece-417db" data-piece="wR" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-b1" style="width:49px;height:49px;" id="b1-fd07-a13b-3d06-0dc9-70d5-9074-79f7-057f" data-square="b1"><div class="notation-322f9 alpha-d2270">b</div><img src="img/chesspieces/wikipedia/wN.png" alt="" class="piece-417db" data-piece="wN" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-c1" style="width:49px;height:49px;" id="c1-c943-5516-3378-9240-a08e-4e33-f4c6-4dd8" data-square="c1"><div class="notation-322f9 alpha-d2270">c</div><img src="img/chesspieces/wikipedia/wB.png" alt="" class="piece-417db" data-piece="wB" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-d1" style="width:49px;height:49px;" id="d1-c0b2-49a7-ae94-5625-f806-d02b-a4f7-44dc" data-square="d1"><div class="notation-322f9 alpha-d2270">d</div><img src="img/chesspieces/wikipedia/wQ.png" alt="" class="piece-417db" data-piece="wQ" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-e1" style="width:49px;height:49px;" id="e1-e7e7-5e45-716f-c7ea-8ee3-983e-8249-296e" data-square="e1"><div class="notation-322f9 alpha-d2270">e</div><img src="img/chesspieces/wikipedia/wK.png" alt="" class="piece-417db" data-piece="wK" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-f1" style="width:49px;height:49px;" id="f1-ab07-422e-18f9-b5a9-5f1b-b0dc-c831-8e27" data-square="f1"><div class="notation-322f9 alpha-d2270">f</div><img src="img/chesspieces/wikipedia/wB.png" alt="" class="piece-417db" data-piece="wB" style="width:49px;height:49px;"></div><div class="square-55d63 black-3c85d square-g1" style="width:49px;height:49px;" id="g1-1bd5-1868-5c4b-7dee-dfda-7525-bda8-d01d" data-square="g1"><div class="notation-322f9 alpha-d2270">g</div><img src="img/chesspieces/wikipedia/wN.png" alt="" class="piece-417db" data-piece="wN" style="width:49px;height:49px;"></div><div class="square-55d63 white-1e1d7 square-h1" style="width:49px;height:49px;" id="h1-6166-c1a7-4ee8-19de-58c5-1e5c-613e-efb1" data-square="h1"><div class="notation-322f9 alpha-d2270">h</div><img src="img/chesspieces/wikipedia/wR.png" alt="" class="piece-417db" data-piece="wR" style="width:49px;height:49px;"></div><div class="clearfix-7da63"></div></div></div></div></div>
+<label>Status:</label>
+<div id="status">White to move</div>
+<label>FEN:</label>
+<div id="fen">rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1</div>
+<label>PGN:</label>
+<div id="pgn"></div>
+<!--- End Example HTML -------------------------------------------------------->
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js" integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js" integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz" crossorigin="anonymous"></script>
+<script>
+// --- Begin Example JS --------------------------------------------------------
+// NOTE: this example uses the chess.js library:
+// https://github.com/jhlywa/chess.js
+
+var board = null
+var game = new Chess()
+var $status = $('#status')
+var $fen = $('#fen')
+var $pgn = $('#pgn')
+
+function onDragStart (source, piece, position, orientation) {
+  // do not pick up pieces if the game is over
+  if (game.game_over()) return false
+
+  // only pick up pieces for the side to move
+  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+    return false
+  }
 }
-.highlight-black {
-  box-shadow: inset 0 0 3px 3px blue;
+
+function onDrop (source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  })
+
+  // illegal move
+  if (move === null) return 'snapback'
+
+  updateStatus()
 }
-</style>
-<div id="myBoard" style="width: 400px"></div>
+
+// update the board position after the piece snap
+// for castling, en passant, pawn promotion
+function onSnapEnd () {
+  board.position(game.fen())
+}
+
+function updateStatus () {
+  var status = ''
+
+  var moveColor = 'White'
+  if (game.turn() === 'b') {
+    moveColor = 'Black'
+  }
+
+  // checkmate?
+  if (game.in_checkmate()) {
+    status = 'Game over, ' + moveColor + ' is in checkmate.'
+  }
+
+  // draw?
+  else if (game.in_draw()) {
+    status = 'Game over, drawn position'
+  }
+
+  // game still on
+  else {
+    status = moveColor + ' to move'
+
+    // check?
+    if (game.in_check()) {
+      status += ', ' + moveColor + ' is in check'
+    }
+  }
+
+  $status.html(status)
+  $fen.html(game.fen())
+  $pgn.html(game.pgn())
+}
+
+var config = {
+  draggable: true,
+  position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd
+}
+board = Chessboard('myBoard', config)
+
+updateStatus()
+// --- End Example JS ----------------------------------------------------------
+</script><img src="img/chesspieces/wikipedia/wP.png" id="9708-c375-e9c0-e6af-67e1-d1f5-266b-a4d8" alt="" class="piece-417db" data-piece="wP" style="width: 49px; height: 49px; position: absolute; left: 353px; top: 380px; display: none;">
+
+
+</body></html>
